@@ -21,3 +21,12 @@
 1. Запускаю playbook, вижу что значение, которое находится в ```some_fact``` - 12
 
 ![alt text](Pictures/pic01.jpg)
+
+2. Нахожу и меняю найденное значение на ```all default fact```.
+3. Создаю своё docker окружение (два контейнера с CentOS и Ubuntu)
+
+![alt text](Pictures/pic02_1.jpg)
+
+4. Запускаю playbook на окружении из prod. Получаю следующие значения some_fact
+
+![alt text](Pictures/pic02.jpg)
