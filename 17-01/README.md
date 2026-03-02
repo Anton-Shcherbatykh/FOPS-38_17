@@ -30,3 +30,8 @@
 4. Запускаю playbook на окружении из prod. Получаю следующие значения some_fact
 
 ![alt text](Pictures/pic02.jpg)
+
+5. Добавил в факты в ```group_vars``` каждой из групп хостов так, чтобы для ```some_fact``` получились значения: для deb — ```deb default fact```, для el — ```el default fact```
+6. Повторил запуск playbook на окружении prod.yml
+
+![alt text](Pictures/pic03.jpg)
