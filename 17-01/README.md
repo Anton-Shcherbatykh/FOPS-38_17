@@ -35,3 +35,22 @@
 6. Повторил запуск playbook на окружении prod.yml
 
 ![alt text](Pictures/pic03.jpg)
+
+7. При помощи ```ansible-vault``` зашифровал факты в ```group_vars/deb``` и ```group_vars/el``` с паролем ```netology```
+
+![alt text](Pictures/pic04.jpg)
+
+8. Запустил playbook на окружении prod.yml. При запуске ansible запросил пароль. Всё работает корректно.
+
+![alt text](Pictures/pic05.jpg)
+
+9. При помощи ansible-doc посмотрел список плагинов для подключения. Выбрал подходящий для работы на control node.
+
+![alt text](Pictures/pic06.jpg)
+
+10. В prod.yml добавил новую группу хостов с именем local, в ней разместил localhost с необходимым типом подключения.
+11. Запустил playbook на окружении prod.yml. При запуске ansible запросил пароль. Факты some_fact для каждого из хостов определены из верных group_vars.
+
+![alt text](Pictures/pic07.jpg)
+
+Заполнил README.md ответами на вопросы. Вывполнил git push в ветку main. [Ссылка на репо с изменённым playbook](https://github.com/Anton-Shcherbatykh/FOPS-38_17/tree/main/17-01/Files)
