@@ -45,6 +45,12 @@
 
 1. В старом playbook создал файл requirements.yml с указанным содержимым:
 
-  ![alt text](Pictures/pic01.jpg)
+ ![alt text](Pictures/pic01.jpg)
 
+2. Скачал роль с помощью ansible-galaxy, появилась директория roles с субдиректорией clickhouse, в которой находится playbook для установки роли clickhouse.
 
+![alt text](Pictures/pic02.jpg)
+
+3. С помощью ansible-galaxy role init vector-role создал роль vector-role
+
+![alt text](Pictures/pic03.jpg)
