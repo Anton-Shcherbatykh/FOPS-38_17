@@ -69,6 +69,8 @@
 
 6. Выложил роли в репозитории. Ссылки на репозитории ролей:
 
+[Vector-role](https://github.com/Anton-Shcherbatykh/FOPS-38_17/tree/main/17-04/Files/playbook/vector-role)
+
 7.Выложил playbook в репозиторий. Ссылка на playbook:
 
 
