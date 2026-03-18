@@ -38,3 +38,38 @@
 10. Выложите playbook в репозиторий.
 
 11. В ответе дайте ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
+
+---
+
+### Решение основной части
+
+1. В старом playbook создал файл requirements.yml с указанным содержимым:
+
+ ![alt text](Pictures/pic01.jpg)
+
+2. Скачал роль с помощью ansible-galaxy, появилась директория roles с субдиректорией clickhouse, в которой находится playbook для установки роли clickhouse.
+
+![alt text](Pictures/pic02.jpg)
+
+3. С помощью ansible-galaxy role init vector-role создал роль vector-role
+
+![alt text](Pictures/pic03.jpg)
+
+4. Проверил работу playbook после изменения на основании roles (vector-role)
+
+![alt text](Pictures/pic04.jpg)
+
+5. Повторил все шаги для роли lighthouse-role
+
+![alt text](Pictures/pic05.jpg)
+
+и также проверил работу playbook после изменения на основании roles (lighthouse-role)
+
+![alt text](Pictures/pic06.jpg)
+
+6. Выложил роли в репозитории. Ссылки на репозитории ролей:
+
+7.Выложил playbook в репозиторий. Ссылка на playbook:
+
+
+
