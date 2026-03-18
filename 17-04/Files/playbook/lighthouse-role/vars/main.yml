@@ -1,0 +1,6 @@
+---
+# vars file for lighthouse-role
+
+# Владелец и группа для файлов Lighthouse (стандартные для Ubuntu)
+lighthouse_owner: www-data
+lighthouse_group: www-data

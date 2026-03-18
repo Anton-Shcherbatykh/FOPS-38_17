@@ -1,0 +1,35 @@
+---
+# tasks file for vector-role
+
+- name: Download Vector .deb package
+  ansible.builtin.get_url:
+    url: "{{ vector_url_deb }}"
+    dest: "/tmp/vector_{{ vector_version }}_amd64.deb"
+    mode: '0644'
+  become: true
+
+- name: Install Vector .deb package
+  ansible.builtin.apt:
+    deb: "/tmp/vector_{{ vector_version }}_amd64.deb"
+  become: true
+
+- name: Vector | Template file (config)
+  ansible.builtin.template:
+    src: vector.yml.j2
+    dest: vector.yml
+    mode: '0644'
+  become: true
+
+- name: Vector | Create Vector service
+  ansible.builtin.template:
+    src: vector.service.j2
+    dest: /etc/systemd/system/vector.service
+    mode: '0644'
+  become: true
+
+- name: Vector | Start service
+  ansible.builtin.systemd:
+    name: vector
+    state: started
+    daemon_reload: true
+  become: true

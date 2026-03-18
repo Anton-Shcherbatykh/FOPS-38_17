@@ -1,0 +1,8 @@
+---
+# defaults file for lighthouse-role
+
+# URL репозитория Lighthouse
+lighthouse_vcs: "https://github.com/VKCOM/lighthouse.git"
+
+# Директория для установки Lighthouse
+lighthouse_location_dir: "/var/www/lighthouse"

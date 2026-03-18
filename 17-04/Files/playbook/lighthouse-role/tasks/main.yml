@@ -1,0 +1,43 @@
+---
+# tasks file for lighthouse-role
+
+- name: Install dependencies (git)
+  ansible.builtin.apt:
+    name: git
+    state: present
+    update_cache: true
+  become: true
+
+- name: Create Lighthouse directory
+  ansible.builtin.file:
+    path: "{{ lighthouse_location_dir }}"
+    state: directory
+    recurse: true
+    mode: '0755'
+    owner: "{{ lighthouse_owner }}"
+    group: "{{ lighthouse_group }}"
+  become: true
+
+- name: Mark directory as safe for git
+  ansible.builtin.command:
+    cmd: git config --global --add safe.directory {{ lighthouse_location_dir }}
+  register: git_safe
+  failed_when: false
+  changed_when: false
+  become: true
+
+- name: Clone Lighthouse from Git
+  ansible.builtin.git:
+    repo: "{{ lighthouse_vcs }}"
+    version: master
+    dest: "{{ lighthouse_location_dir }}"
+    force: yes
+  become: true
+
+- name: Deploy Lighthouse nginx config
+  ansible.builtin.template:
+    src: lighthouse.conf.j2
+    dest: /etc/nginx/conf.d/default.conf
+    mode: '0644'
+  notify: restart nginx
+  become: true
