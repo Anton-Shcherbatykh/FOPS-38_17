@@ -73,6 +73,7 @@
 
 
 Name	 '|' Default Value	 '|' Description
+ | --- | --- | --- |
 vector_url  '|' 	https://packages.timber.io/vector/0.33.1/vector-0.33.1-1.x86_64.rpm	 '|' Download source
 vector_config_dir '|' 	/etc/vector	 '|' Install path
 data_dir '|' 	/var/lib/vector	Vector  '|' data directory
