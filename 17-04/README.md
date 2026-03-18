@@ -54,3 +54,23 @@
 3. С помощью ansible-galaxy role init vector-role создал роль vector-role
 
 ![alt text](Pictures/pic03.jpg)
+
+4. Проверил работу playbook после изменения на основании roles (vector-role)
+
+![alt text](Pictures/pic04.jpg)
+
+5. Повторил все шаги для роли lighthouse-role
+
+![alt text](Pictures/pic05.jpg)
+
+и также проверил работу playbook после изменения на основании roles (lighthouse-role)
+
+![alt text](Pictures/pic06.jpg)
+
+6. Выложил роли в репозитории. Ссылки на репозитории ролей:
+
+7.Выложил playbook в репозиторий. Ссылка на playbook:
+
+
+
+
