@@ -75,5 +75,5 @@
 
 7.Выложил playbook в репозиторий. Ссылка на playbook:
 
-
+[Playbook](https://github.com/Anton-Shcherbatykh/FOPS-38_17/tree/main/17-04/Files/playbook)
 
