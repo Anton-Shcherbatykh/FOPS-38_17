@@ -1,86 +1,26 @@
-## Домашнее задание к занятию «Работа с roles» FOPS-38 (Щербатых А.Е.)
+## Домашнее задание к занятию «Тестирование roles» FOPS-38 (Щербатых А.Е.)
 
 ### Основная часть
 ---
-Ваша цель — разбить ваш playbook на отдельные roles.
+Ваша цель — настроить тестирование ваших ролей.
 
-Задача — сделать roles для ClickHouse, Vector и LightHouse и написать playbook для использования этих ролей.
+Задача — сделать сценарии тестирования для vector.
 
-Ожидаемый результат — существуют три ваших репозитория: два с roles и один с playbook.
+Ожидаемый результат — все сценарии успешно проходят тестирование ролей.
 
-Что нужно сделать
+### Molecule
+1. Запустите ```molecule test -s ubuntu_xenial``` (или с любым другим сценарием, не имеет значения) внутри корневой директории ```clickhouse-role```, посмотрите на вывод команды. Данная команда может отработать с ошибками или не отработать вовсе, это нормально. Наша цель - посмотреть как другие в реальном мире используют молекулу И из чего может состоять сценарий тестирования.
+2. Перейдите в каталог с ролью ```vector-role``` и создайте сценарий тестирования по умолчанию при помощи ```molecule init scenario --driver-name docker```.
+3. Добавьте несколько разных дистрибутивов (oraclelinux:8, ubuntu:latest) для инстансов и протестируйте роль, исправьте найденные ошибки, если они есть.
+4. Добавьте несколько assert в verify.yml-файл для проверки работоспособности vector-role (проверка, что конфиг валидный, проверка успешности запуска и др.).
+5. Запустите тестирование роли повторно и проверьте, что оно прошло успешно.
+6. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
 
-1. Создайте в старой версии playbook файл ```requirements.yml``` и заполните его содержимым:
-
-```bash
----
-  - src: git@github.com:AlexeySetevoi/ansible-clickhouse.git
-    scm: git
-    version: "1.13"
-    name: clickhouse
-``` 
-2. При помощи ```ansible-galaxy``` скачайте себе эту роль.
-
-3. Создайте новый каталог с ролью при помощи ```ansible-galaxy role init vector-role```.
-
-4. На основе tasks из старого playbook заполните новую role. Разнесите переменные между ```vars``` и ```default```.
-
-5. Перенести нужные шаблоны конфигов в ```templates```.
-
-6. Опишите в ```README.md``` обе роли и их параметры. Пример качественной документации ansible role по ссылке.
-
-7. Повторите шаги 3–6 для LightHouse. Помните, что одна роль должна настраивать один продукт.
-
-8. Выложите все roles в репозитории. Проставьте теги, используя семантическую нумерацию. Добавьте roles в ```requirements.yml``` в playbook.
-
-9. Переработайте playbook на использование roles. Не забудьте про зависимости LightHouse и возможности совмещения ```roles``` с ```tasks```.
-
-10. Выложите playbook в репозиторий.
-
-11. В ответе дайте ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
-
----
-### Подготовка к выполнению
-
-Для выполнения ДЗ создал 3 виртуальные машины в Yandex.Cloud с использованием Terraform.
-
-![alt text](Pictures/pic07.jpg)
-
-![alt text](Pictures/pic08.jpg)
-
-### Решение основной части
-
-1. В старом playbook создал файл requirements.yml с указанным содержимым:
-
- ![alt text](Pictures/pic01.jpg)
-
-2. Скачал роль с помощью ansible-galaxy, появилась директория roles с субдиректорией clickhouse, в которой находится playbook для установки роли clickhouse.
-
-![alt text](Pictures/pic02.jpg)
-
-3. С помощью ansible-galaxy role init vector-role создал роль vector-role
-
-![alt text](Pictures/pic03.jpg)
-
-4. Проверил работу playbook после изменения на основании roles (vector-role)
-
-![alt text](Pictures/pic04.jpg)
-
-5. Повторил все шаги для роли lighthouse-role
-
-![alt text](Pictures/pic05.jpg)
-
-и также проверил работу playbook после изменения на основании roles (lighthouse-role)
-
-![alt text](Pictures/pic06.jpg)
-
-6. Выложил роли в репозитории. Ссылки на репозитории ролей:
-
-[Vector-role](https://github.com/Anton-Shcherbatykh/FOPS-38_17/tree/main/17-04/Files/playbook/vector-role)
-
-[Lighthouse-role](https://github.com/Anton-Shcherbatykh/FOPS-38_17/tree/main/17-04/Files/playbook/lighthouse-role)
-
-7.Выложил playbook в репозиторий. Ссылка на playbook:
-
-[Playbook](https://github.com/Anton-Shcherbatykh/FOPS-38_17/tree/main/17-04/Files/playbook)
-
+### Выполнение
+1. Т.к. использую ВМ на ОС Debian 12, то установку плагинов для molecule выолнял через pipx, а не через pip3.
+2. Для начала устанвоил сам pipx с помощью команды sudo apt install -y pipx. Затем выполнил команду для установки плагинов pipx install "molecule-plugins[docker,podman]"
+3. Команда molecule init scenario в версии 26.3.0 не принимает аргументы --driver-name или --driver. 
+Эти опции были удалены в пользу настройки драйвера непосредственно в файле конфигурации. Чтобы создать сценарий с драйвером Docker, выполняю следующее:
+- Создаю сценарий по умолчанию
+cd /home/shcherbatykh/FOPS-38_17/17-04/Files/playbook/vector-role
+molecule init scenario default
