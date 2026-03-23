@@ -2,7 +2,7 @@
 clickhouse:
   hosts:
     ubuntu-1:
-      ansible_host: 89.169.147.72
+      ansible_host: 89.169.141.131
       ansible_user: ubuntu
   vars:
     clickhouse_version: 24.3.3.102
@@ -13,15 +13,15 @@ clickhouse:
 vector:
   hosts:
     ubuntu-2:
-      ansible_host: 62.84.115.133
+      ansible_host: 62.84.115.127
       ansible_user: ubuntu
   vars:
     vector_version: 0.47.0
-    vector_url_deb: "https://packages.timber.io/vector/0.47.X/vector_0.47.0-1_amd64.deb"
+    vector_url_deb: "https://packages.timber.io/vector/0.47.0/vector_0.47.0-1_amd64.deb"
 lighthouse:
   hosts:
     ubuntu-3:
-      ansible_host: 89.169.154.215
+      ansible_host: 93.77.176.155
       ansible_user: ubuntu
   vars:
     lighthouse_vcs: https://github.com/VKCOM/lighthouse.git

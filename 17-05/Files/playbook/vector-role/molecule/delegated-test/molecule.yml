@@ -1,0 +1,25 @@
+---
+driver:
+  name: default
+
+provisioner:
+  name: ansible
+  roles_path:
+    - /home/shcherbatykh/FOPS-38_17/17-05/Files/playbook/vector-role
+  playbooks:
+    converge: converge.yml
+    verify: verify.yml
+  ansible_cfg:
+    defaults:
+      host_key_checking: false
+      inventory: /home/shcherbatykh/FOPS-38_17/17-05/Files/playbook/inventory/prod.yml
+
+verifier:
+  name: ansible
+
+scenario:
+  name: delegated-test
+  test_sequence:
+    - syntax
+    - converge
+    - verify
