@@ -108,5 +108,6 @@ scenario:
 
 выполнил ```molecule test -s delegated-test``` и получил, что ```molecule converge``` не находит хосты, хотя инвентарь корректный и Ansible его видит (проверено через ansible-inventory). Судя по всему, это происходит потому, что ```molecule``` для сценария с драйвером ```default``` по умолчанию создаёт свой собственный инвентарь и не использует указанный в ```inventory_path```. Я много раз пробовал разные варианты, но проблема не решается.
 
+![alt text](Pictures/pic09.jpg)
 
 Все файлы по выполняемому заданию вот тут [Vector-role](https://github.com/Anton-Shcherbatykh/FOPS-38_17/tree/main/17-05/Files/playbook/vector-role)
