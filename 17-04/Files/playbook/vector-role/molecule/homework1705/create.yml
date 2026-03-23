@@ -1,0 +1,18 @@
+---
+- name: Create Docker containers
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Create containers
+      community.docker.docker_container:
+        name: "{{ item.name }}"
+        image: "{{ item.image }}"
+        command: "{{ item.command | default(omit) }}"
+        privileged: "{{ item.privileged | default(false) }}"
+        volumes: "{{ item.volumes | default(omit) }}"
+        state: started
+        detach: true
+      loop: "{{ molecule_yml.platforms }}"
+      loop_control:
+        label: "{{ item.name }}"

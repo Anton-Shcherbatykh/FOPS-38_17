@@ -1,0 +1,46 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: debian-13
+    image: mpaivabarbosa/molecule-systemd-debian:13
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+
+  - name: ubuntu-24
+    image: mpaivabarbosa/molecule-systemd-ubuntu:24.04
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+
+provisioner:
+  name: ansible
+#  config_options:
+#    defaults:
+#      remote_tmp: /tmp/ansible-tmp  
+
+  roles_path:
+    - /home/shcherbatykh/FOPS-38_17/17-04/Files/playbook
+
+  inventory:
+    group_vars:
+      all:
+        ansible_python_interpreter: /usr/bin/python3
+        ansible_connection: community.docker.docker
+#        ansible_remote_tmp: /tmp/ansible-tmp
+        ansible_module_compression: 'no'
+        ansible_become: false
+        vector_path: /opt/vector
+        vector_version: "0.37.1"
+        vector_data_path: /var/lib/vector
+        vector_config: /etc/vector/vector.toml
+        vector_service_state: started
+        ansible_architecture: amd64
+
+verifier:
+  name: testinfra
