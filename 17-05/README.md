@@ -39,4 +39,10 @@ molecule init scenario homework1705
 
 5. Попробовал протестировать роль с использованием **molecule** но из-за проблем при создании папки внутри контейнера тестирование закончилось неудачно
 
+![alt text](Pictures/pic04.jpg)
 
+![alt text](Pictures/pic05.jpg)
+
+![alt text](Pictures/pic06.jpg)
+
+![alt text](Pictures/pic07.jpg)
