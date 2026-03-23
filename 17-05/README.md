@@ -111,3 +111,37 @@ scenario:
 ![alt text](Pictures/pic09.jpg)
 
 Все файлы по выполняемому заданию вот тут [Vector-role](https://github.com/Anton-Shcherbatykh/FOPS-38_17/tree/main/17-05/Files/playbook/vector-role)
+
+---
+
+### Tox
+
+1. Добавьте в директорию с vector-role файлы из [директории}(https://github.com/netology-code/mnt-homeworks/tree/MNT-video/08-ansible-05-testing)
+2. Запустите docker run --privileged=True -v <path_to_repo>:/opt/vector-role -w /opt/vector-role -it aragast/netology:latest /bin/bash, где path_to_repo — путь до корня репозитория с vector-role на вашей файловой системе.
+3. Внутри контейнера выполните команду tox, посмотрите на вывод.
+4. Создайте облегчённый сценарий для molecule с драйвером molecule_podman. Проверьте его на исполнимость.
+5. Пропишите правильную команду в tox.ini, чтобы запускался облегчённый сценарий.
+6. Запустите команду tox. Убедитесь, что всё отработало успешно.
+7. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
+
+
+### Выполнение
+
+Выполнил пункты 1, 2 и 3.
+
+Получил сообщение об ошибке 
+
+![alt text](Pictures/pic012.jpg)
+
+![alt text](Pictures/pic013.jpg)
+
+Создал облегчённый сценарий для molecule с драйвером molecule_podman. Прописал правильную команду в tox.ini, чтобы запускался облегчённый сценарий.
+
+Запустил команду tox. Убедился, что проблема с созданием временной папки в контейнере никуда не делась (к огромному сожалению).
+
+![alt text](Pictures/pic014.jpg)
+![alt text](Pictures/pic015.jpg)
+![alt text](Pictures/pic016.jpg)
+![alt text](Pictures/pic017.jpg)
+![alt text](Pictures/pic018.jpg)
+
