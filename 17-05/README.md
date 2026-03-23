@@ -22,5 +22,8 @@
 3. Команда molecule init scenario в версии 26.3.0 не принимает аргументы --driver-name или --driver. 
 Эти опции были удалены в пользу настройки драйвера непосредственно в файле конфигурации. Чтобы создать сценарий с драйвером Docker, выполняю следующее:
 - Создаю сценарий по умолчанию
+
+```bash
 cd /home/shcherbatykh/FOPS-38_17/17-04/Files/playbook/vector-role
 molecule init scenario default
+```
