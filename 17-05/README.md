@@ -47,4 +47,66 @@ molecule init scenario homework1705
 
 ![alt text](Pictures/pic07.jpg)
 
+Решил попробовать применить **molecule** с "живыми" ВМ.
+
+С помощью terraform создал ВМ в облаке
+
+![alt text](Pictures/pic010.jpg)
+
+![alt text](Pictures/pic011.jpg)
+
+Создал новый сценарий
+
+```bash
+cd /home/shcherbatykh/FOPS-38_17/17-04/Files/playbook/vector-role
+molecule init scenario delegated-test
+```
+
+![alt text](Pictures/pic08.jpg)
+
+Настроил```molecule/delegated-test/molecule.yml```. Отредактировал файл, указав путь к существующему инвентарю и отключив создание/удаление контейнеров.
+
+```bash
+---
+driver:
+  name: default
+
+provisioner:
+  name: ansible
+  roles_path:
+    - /home/shcherbatykh/FOPS-38_17/17-05/Files/playbook/vector-role
+  playbooks:
+    converge: converge.yml
+    verify: verify.yml
+  ansible_cfg:
+    defaults:
+      host_key_checking: false
+      inventory: /home/shcherbatykh/FOPS-38_17/17-05/Files/playbook/inventory/prod.yml
+
+verifier:
+  name: ansible
+
+scenario:
+  name: delegated-test
+  test_sequence:
+    - syntax
+    - converge
+    - verify
+```
+Настроил converge.yml, применив роль к хостам группы vector (как в основном плейбуке).
+
+```bash
+---
+- name: Converge
+  hosts: vector
+  become: true
+  tasks:
+    - name: Apply vector-role
+      ansible.builtin.include_role:
+        name: vector-role
+```
+
+выполнил ```molecule test -s delegated-test``` и получил, что ```molecule converge``` не находит хосты, хотя инвентарь корректный и Ansible его видит (проверено через ansible-inventory). Судя по всему, это происходит потому, что ```molecule``` для сценария с драйвером ```default``` по умолчанию создаёт свой собственный инвентарь и не использует указанный в ```inventory_path```. Я много раз пробовал разные варианты, но проблема не решается.
+
+
 Все файлы по выполняемому заданию вот тут [Vector-role](https://github.com/Anton-Shcherbatykh/FOPS-38_17/tree/main/17-05/Files/playbook/vector-role)
