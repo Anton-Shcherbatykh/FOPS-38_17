@@ -18,8 +18,15 @@
 
 ### Выполнение
 1. Т.к. использую ВМ на ОС Debian 12, то установку плагинов для molecule выолнял через pipx, а не через pip3.
-2. Для начала устанвоил сам pipx с помощью команды sudo apt install -y pipx. Затем выполнил команду для установки плагинов pipx install "molecule-plugins[docker,podman]"
-3. Команда molecule init scenario в версии 26.3.0 не принимает аргументы --driver-name или --driver. 
+2. Для начала установил сам pipx с помощью команды sudo apt install -y pipx. Затем выполнил команду для установки плагинов pipx install "molecule-plugins[docker,podman]"
+
+![alt text](Pictures/pic01.jpg)
+
+3. Создал и активировал виртуальное окружение:
+
+![alt text](Pictures/pic02.jpg)
+
+4. Команда molecule init scenario в версии 26.3.0 не принимает аргументы --driver-name или --driver. 
 Эти опции были удалены в пользу настройки драйвера непосредственно в файле конфигурации. Чтобы создать сценарий с драйвером Docker, выполняю следующее:
 - Создаю сценарий по умолчанию
 
@@ -27,3 +34,5 @@
 cd /home/shcherbatykh/FOPS-38_17/17-04/Files/playbook/vector-role
 molecule init scenario default
 ```
+
+![alt text](Pictures/pic03.jpg)
