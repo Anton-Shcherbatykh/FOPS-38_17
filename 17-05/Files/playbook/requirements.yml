@@ -1,0 +1,14 @@
+---
+# Удалённая роль Clickhouse (из Git)
+  - src: https://github.com/AlexeySetevoi/ansible-clickhouse.git
+    scm: git
+    version: "1.13"
+    name: clickhouse
+
+# Локальная роль Vector
+    src: ./vector-role
+    name: vector-role
+
+# Локальная роль Lighthouse
+  - src: ./lighthouse-role
+    name: lighthouse-role

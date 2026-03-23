@@ -1,0 +1,10 @@
+---
+# Версия Vector (по умолчанию)
+vector_version: "0.47.0"
+
+# Базовый URL для скачивания
+vector_mirror: "https://packages.timber.io/vector"
+
+# Формируем полный URL пакета
+vector_deb_file: "vector_{{ vector_version }}-1_amd64.deb"
+vector_url_deb: "{{ vector_mirror }}/{{ vector_version }}/{{ vector_deb_file }}"

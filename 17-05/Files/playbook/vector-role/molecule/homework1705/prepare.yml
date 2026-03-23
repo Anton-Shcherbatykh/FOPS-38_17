@@ -1,0 +1,19 @@
+---
+- name: Prepare
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure Python is installed (Debian/Ubuntu)
+      ansible.builtin.apt:
+        name:
+          - python3
+          - python3-pip
+        state: present
+        update_cache: true
+      when: ansible_os_family == "Debian"
+
+#    - name: Ensure temporary directory exists
+#      ansible.builtin.file:
+#        path: /tmp/ansible-tmp
+#        state: directory
+#        mode: '0755'

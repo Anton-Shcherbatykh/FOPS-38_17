@@ -1,0 +1,22 @@
+galaxy_info:
+  role_name: vector_role                # обязательно: имя роли (только буквы, цифры, подчеркивания)
+  namespace: my_namespace               # обязательно: пространство имён (можно любое)
+  author: "Anton Shcherbatykh"          # можно указать ваше имя
+  description: "Install and configure Vector (observability pipeline)"
+  company: ""
+  license: MIT
+  min_ansible_version: "2.9"
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+    - name: Ubuntu
+      versions:
+        - jammy
+        - focal
+  galaxy_tags:
+    - vector
+    - logging
+    - observability
+
+dependencies: []

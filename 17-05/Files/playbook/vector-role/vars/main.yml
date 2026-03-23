@@ -1,0 +1,11 @@
+---
+# vars file for vector-role
+# Директория для конфигурации Vector
+vector_config_dir: "/etc/vector"
+
+# Пользователь и группа для сервиса
+vector_user: "vector"
+vector_group: "vector"
+
+# Имя сервиса в systemd
+vector_service_name: "vector"
