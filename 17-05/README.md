@@ -47,4 +47,4 @@ molecule init scenario homework1705
 
 ![alt text](Pictures/pic07.jpg)
 
-[Vector-role](https://github.com/Anton-Shcherbatykh/FOPS-38_17/tree/main/17-05/Files/playbook/vector-role)
+Все файлы по выполняемому заданию вот тут [Vector-role](https://github.com/Anton-Shcherbatykh/FOPS-38_17/tree/main/17-05/Files/playbook/vector-role)
