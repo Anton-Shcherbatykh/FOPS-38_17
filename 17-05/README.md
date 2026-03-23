@@ -32,9 +32,11 @@
 
 ```bash
 cd /home/shcherbatykh/FOPS-38_17/17-04/Files/playbook/vector-role
-molecule init scenario default
+molecule init scenario homework1705
 ```
 
 ![alt text](Pictures/pic03.jpg)
+
+5. Попробовал протестировать роль с использованием **molecule** но из-за проблем при создании папки внутри контейнера тестирование закончилось неудачно
 
 
