@@ -1,10 +1,60 @@
 ---
 # Purpose: assert that the instance really ended up in the expected state.
 # Molecule calls this playbook with `molecule verify`.
-- name: Verify
-  hosts: instance
-  gather_facts: false # Quicker, if you do not need facts
+---
+- name: Verify Vector installation
+  hosts: all
+  become: true
   tasks:
-    - name: Assert something
+    - name: Check Vector config file exists
+      ansible.builtin.stat:
+        path: "{{ vector_config }}"
+      register: vector_config_stat
+
+    - name: Assert config file exists
       ansible.builtin.assert:
-        that: true
+        that:
+          - vector_config_stat.stat.exists
+        fail_msg: "Vector config file not found at {{ vector_config }}"
+        success_msg: "Vector config file exists"
+
+    - name: Validate Vector config syntax
+      ansible.builtin.command:
+        cmd: /usr/bin/vector validate --config "{{ vector_config }}"
+      register: vector_validate
+      changed_when: false
+
+    - name: Assert config is valid
+      ansible.builtin.assert:
+        that:
+          - vector_validate.rc == 0
+        fail_msg: "Vector config validation failed: {{ vector_validate.stderr }}"
+        success_msg: "Vector config is valid"
+
+    - name: Check Vector service is running
+      ansible.builtin.systemd:
+        name: vector
+      register: vector_service
+
+    - name: Assert service is active
+      ansible.builtin.assert:
+        that:
+          - vector_service.status.ActiveState == "active"
+        fail_msg: "Vector service is not active"
+        success_msg: "Vector service is active"
+
+    - name: Check Vector API endpoint (if enabled)
+      ansible.builtin.uri:
+        url: "http://127.0.0.1:8686/"
+        status_code: 200
+      register: vector_api
+      ignore_errors: true
+      when: vector_api_enabled | default(false)
+
+    - name: Assert API is accessible (if enabled)
+      ansible.builtin.assert:
+        that:
+          - vector_api.status == 200
+        fail_msg: "Vector API not accessible"
+        success_msg: "Vector API accessible"
+      when: vector_api_enabled | default(false)
