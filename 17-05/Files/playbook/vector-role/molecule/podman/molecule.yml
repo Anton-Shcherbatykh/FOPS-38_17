@@ -24,7 +24,7 @@ scenario:
   name: podman
   test_sequence:
     - create
-    - prepare      # добавили подготовку
+    - prepare      # добавил подготовку
     - converge
     - verify
     - destroy
