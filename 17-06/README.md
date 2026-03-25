@@ -42,4 +42,14 @@
 
 ### Выполнение
 
+1. Создал пустой публичный репозиторий в своём проекте [FOPS38_17](https://github.com/Anton-Shcherbatykh/FOPS-38_17)
+2. Скачал репозиторий Ansible: https://github.com/ansible/ansible.git в созданный репозиторий.
+3. Создал виртуальное окружение: python3 -m venv venv. Активируйте его командой: . venv/bin/activate. Дальнейшие действия производил только в виртуальном окружении.
+4. Установил зависимости pip install -r requirements.txt.
+5. Произвёл настройку окружения командой: . hacking/env-setup.
+6. В виртуальном окружении создал my_hw_module.py файл.
+7. Наполните его содержимым из [статьи](https://docs.ansible.com/projects/ansible/latest/dev_guide/developing_modules_general.html#creating-a-module)
+8. Заполнил файл в соответствии с требованиями Ansible, чтобы он выполнял основную задачу: module должен создавать текстовый файл на удалённом хосте по пути, определённом в параметре path, с содержимым, определённым в параметре content.
+9. Проверил module на исполняемость локально.
+
 
