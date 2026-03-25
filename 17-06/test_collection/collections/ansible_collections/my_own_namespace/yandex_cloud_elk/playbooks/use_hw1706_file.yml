@@ -1,0 +1,6 @@
+---
+- name: Test hw1706_file role
+  hosts: localhost
+  gather_facts: false
+  roles:
+    - hw1706_file

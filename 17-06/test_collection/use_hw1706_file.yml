@@ -1,0 +1,8 @@
+---
+- name: Test hw1706_file role
+  hosts: localhost
+  gather_facts: false
+  collections:
+    - my_own_namespace.yandex_cloud_elk
+  roles:
+    - hw1706_file
