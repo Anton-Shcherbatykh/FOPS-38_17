@@ -1,0 +1,5 @@
+---
+- name: Write file using custom module
+  my_own_namespace.yandex_cloud_elk.my_hw_module:
+    path: "{{ write_file_path }}"
+    content: "{{ write_file_content }}"
