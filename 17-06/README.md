@@ -71,6 +71,12 @@
 17. Заполнил документацию по collection, выложил в свой репозиторий, поставил тег 1.0.0 на этот коммит.
 18. Создал .tar.gz этой collection командой ```ansible-galaxy collection build``` в корневой директории collection.
 19. Создал ещё одну директорию, перенёс туда ```single task playbook``` и архив c collection.
-20. Установил collection из локального архива командой ```ansible-galaxy collection install <archivename>.tar.gz```.
+20. Установил collection из локального архива командой ```ansible-galaxy collection install my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz```.
 
-Шаг 16. Запустите playbook, убедитесь, что он работает.
+![alt text](Pictures/pic04.jpg)
+
+22. Запустил playbook и убедился, что он работает.
+
+![alt text](Pictures/pic05.jpg)
+
+
