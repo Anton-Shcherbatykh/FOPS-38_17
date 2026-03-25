@@ -79,4 +79,5 @@
 
 ![alt text](Pictures/pic05.jpg)
 
-
+Ссылка на [collection](17-06/my_own_namespace/yandex_cloud_elk)
+Ссылка на [tar.gz архив]()
