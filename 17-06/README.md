@@ -43,13 +43,34 @@
 ### Выполнение
 
 1. Создал пустой публичный репозиторий в своём проекте [FOPS38_17](https://github.com/Anton-Shcherbatykh/FOPS-38_17)
-2. Скачал репозиторий Ansible: https://github.com/ansible/ansible.git в созданный репозиторий.
-3. Создал виртуальное окружение: python3 -m venv venv. Активировал его командой: . venv/bin/activate. Дальнейшие действия производил только в виртуальном окружении.
-4. Установил зависимости pip install -r requirements.txt.
-5. Произвёл настройку окружения командой: . hacking/env-setup.
-6. В виртуальном окружении создал my_hw_module.py файл.
+2. Скачал репозиторий Ansible: ```https://github.com/ansible/ansible.git``` в созданный репозиторий.
+3. Создал виртуальное окружение: ```python3 -m venv venv```. Активировал его командой: ```. venv/bin/activate```. Дальнейшие действия производил только в виртуальном окружении.
+4. Установил зависимости ```pip install -r requirements.txt```.
+5. Произвёл настройку окружения командой: ```. hacking/env-setup```.
+6. В виртуальном окружении создал ```my_hw_module.py``` файл.
 7. Наполните его содержимым из [статьи](https://docs.ansible.com/projects/ansible/latest/dev_guide/developing_modules_general.html#creating-a-module)
-8. Заполнил файл в соответствии с требованиями Ansible, чтобы он выполнял основную задачу: module должен создавать текстовый файл на удалённом хосте по пути, определённом в параметре path, с содержимым, определённым в параметре content.
-9. Проверил module на исполняемость локально.
+8. Заполнил файл в соответствии с требованиями Ansible, чтобы он выполнял основную задачу: ```module``` должен создавать текстовый файл на удалённом хосте по пути, определённом в параметре ```path```, с содержимым, определённым в параметре ```content```.
+9. Проверил ```module``` на исполняемость локально.
 
 ![alt text](Pictures/pic01.jpg)
+
+10. Написал single task playbook и использовал module в нём.
+
+11. Проверил ```module``` через playbook на идемпотентность.
+
+![alt text](Pictures/pic02.jpg)
+
+12. Вышел из виртуального окружения.
+13. Инициализировал новую collection: ansible-galaxy collection init my_own_namespace.yandex_cloud_elk.
+
+![alt text](Pictures/pic03.jpg)
+
+14. В эту collection перенёс свой ```module``` в соответствующую директорию.
+15. Single task playbook преобразовал в single task role и перенёс в collection. У role есть default всех параметров ```module```.
+16. Создал playbook для использования этой role.
+17. Заполнил документацию по collection, выложил в свой репозиторий, поставил тег 1.0.0 на этот коммит.
+18. Создал .tar.gz этой collection командой ```ansible-galaxy collection build``` в корневой директории collection.
+19. Создал ещё одну директорию, перенёс туда ```single task playbook``` и архив c collection.
+20. Установил collection из локального архива командой ```ansible-galaxy collection install <archivename>.tar.gz```.
+
+Шаг 16. Запустите playbook, убедитесь, что он работает.
